@@ -11,7 +11,7 @@ def SumPositiveOnly(a, b):
     else:
         num1 = num1 + ("0" * app)
 
-    for i in range(len(a)):
+    for i in range(len(num1)):
         summ = int(num1[i]) + int(num2[i])
         res = res + (str((summ % 10) + carry))
         carry = summ // 10
@@ -19,4 +19,4 @@ def SumPositiveOnly(a, b):
     return res[::-1]
 
 
-print(SumPositiveOnly("1239", "123"))
+# print(SumPositiveOnly("123456", "123"))

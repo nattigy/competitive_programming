@@ -1,14 +1,25 @@
-def CountingSort(arr):
-    newArr = [0] * (len(arr))
+def CountingSort2(arr):
+    maxx = 0
+    for i in arr:
+        if i > maxx:
+            maxx = i
+
+    newArr = [0] * (maxx + 1)
+    res = []
 
     for i in arr:
         newArr[i] += 1
 
-    return newArr
+    for i in range(len(newArr)):
+        if newArr[i] > 0:
+            for j in range(newArr[i]):
+                res.append(i)
+
+    return res
 
 
 print(
-    CountingSort(
+    CountingSort2(
         [
             63,
             25,

@@ -1,14 +1,9 @@
 def BubbleSort(arr):
-    notSorted = True
-    while notSorted:
-        for i in range(len(arr) - 1):
-            if arr[i] > arr[i + 1]:
-                arr[i], arr[i + 1] = arr[i + 1], arr[i]
-                notSorted = True
-            else:
-                notSorted = False
-
+    for i in range(len(arr) - 1):
+        for j in range(i + 1, len(arr)):
+            if arr[i] > arr[j]:
+                arr[i], arr[j] = arr[j], arr[i]
     return arr
 
 
-print(BubbleSort([10, 5, 6, 7, 9]))
+print(BubbleSort([12, 5, 111, 200, 1000, 10, 1, 2]))

@@ -1,25 +1,47 @@
 def Division(a, b):
     q = ""
-    r = 0
+    r = ""
     i = 0
-    while a != "" or i != len(a):
-        print(a[: i + 1])
-        if len(b) > len(a[: i + 1]):
+    dd = 0
 
-            if len(b) == len(a[: i + 1]) and b < a[: i + 1]:
-
-                q = q + str(int(a[: i + 1]) // int(b))
-                r = (int(a[: i + 1]) / int(b)) % 10
-                if r != 0:
-                    a = str(r) + a[i + 1 :]
-                else:
-                    a = a[i + 1]
-                i = 0
-            else:
-                i += 1
-        else:
+    while a != "":
+        if len(a[: i + 1]) < len(b):
             i += 1
-    return q
+            if i > 1:
+                q = q + "0"
+            print("1:" + a)
+        elif len(a[: i + 1]) == len(b) and a[: i + 1] < b:
+            i += 1
+            if i > 1:
+                q = q + "0"
+            print("2:" + a)
+        elif len(a[: i + 1]) > len(b):
+            q = q + str(int(a[: i + 1]) // int(b))
+            r = str(int(a[: i + 1]) % int(b))
+            a = a[i + 1 :]
+            if a != "" and (r != "0"):
+                a = r + a
+            i = 0
+            print("3:" + a)
+        elif len(a[: i + 1]) == len(b) and a[: i + 1] >= b:
+            q = q + str(int(a[: i + 1]) // int(b))
+            r = str(int(a[: i + 1]) % int(b))
+            a = a[i + 1 :]
+            if a != "" and (r != "0"):
+                a = r + a
+            i = 0
+            print("4:" + a)
+
+        if len(a) == 0:
+            r = r + a if r != "0" else a
+            break
+
+        dd += 1
+
+        if dd == 10:
+            break
+
+    return (q, r)
 
 
-print(Division("544", "53"))
+print(Division("100", "10"))

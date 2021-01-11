@@ -1,14 +1,23 @@
 def FindMedian(arr):
-    smallest = 0
     n = len(arr)
-    for i in range(n):
-        smallest = arr[i]
-        for j in range(i + 1, n):
-            if arr[j] < smallest:
-                smallest = arr[j]
-                arr[i], arr[j] = arr[j], arr[i]
-        if i == (n - 1) / 2:
-            return arr[i]
+
+    maxx = 0
+    for i in arr:
+        if i > maxx:
+            maxx = i
+
+    newArr = [0] * (maxx + 1)
+    res = []
+
+    for i in arr:
+        newArr[i] += 1
+
+    for i in range(len(newArr)):
+        if newArr[i] > 0:
+            for j in range(newArr[i]):
+                res.append(i)
+                if len(res) == (n + 1) / 2:
+                    return i
 
 
-print(FindMedian([0, 1, 2, 4, 6, 5, 3]))
+print(FindMedian([5]))

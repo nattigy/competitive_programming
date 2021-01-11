@@ -10,19 +10,6 @@ def MarkAndToys(prices, k):
             res += 1
         else:
             return res
-    # for i in range(len(prices)):
-    #     smallest = prices[i]
-    #     for j in range(i + 1, len(prices)):
-    #         if prices[j] < smallest:
-    #             smallest = prices[j]
-    #             prices[i], prices[j] = prices[j], prices[i]
-
-    #     if summ + prices[i] <= k:
-    #         summ += prices[i]
-    #         res += 1
-    #     else:
-    #         break
-
     return res
 
 

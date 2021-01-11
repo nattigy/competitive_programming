@@ -1,8 +1,9 @@
 def CountingSort2(arr):
     maxx = 0
-    for i in arr:
-        if i > maxx:
-            maxx = i
+    if len(arr) == 0:
+        return arr
+
+    maxx = max(arr)
 
     newArr = [0] * (maxx + 1)
     res = []

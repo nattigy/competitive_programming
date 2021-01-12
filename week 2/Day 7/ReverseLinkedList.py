@@ -17,5 +17,12 @@ class Solution:
         return p
 
 
+# [0,0]
+# [1,0,1]
+# [1,2,2,1]
+# [1,2]
+while 1:
+    print("h")
+
 sln = Solution()
-sln.reverseList(ListNode(1, ListNode(5, ListNode(9, ListNode(4)))))
+# sln.reverseList(ListNode(1, ListNode(5, ListNode(9, ListNode(4)))))

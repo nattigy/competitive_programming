@@ -1,10 +1,12 @@
 def factorial(n):
-    if n == 0:
-        return 1
-    return n * factorial(n - 1)
+    if n < 0:
+        return None
+    return 1 if n == 0 else n * factorial(n - 1)
 
 
 def factorial2(n):
+    if n < 0:
+        return None
     if n == 0:
         return 1
     res = 1
@@ -13,4 +15,4 @@ def factorial2(n):
     return res
 
 
-print(factorial2(5))
+print(factorial(-5))

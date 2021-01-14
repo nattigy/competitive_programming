@@ -1,36 +1,58 @@
-class Node:
-    def __init__(self, val=None, next=None):
-        self.val = val
-        self.next = next
-
-
 class MyQueue:
     def __init__(self):
-        self.head = None
+        self.stack1 = []
+        self.stack2 = []
 
     def push(self, x: int) -> None:
-        if self.head == None:
-            self.head = Node(x)
-            return
-        c_node = self.head
-        while c_node.next:
-            c_node = c_node.next
-        c_node.next = Node(x)
+        if len(self.stack1) == 0 and len(self.stack2) == 0:
+            self.stack1.append(x)
+        elif len(self.stack2) > 0:
+            self.stack2.append(x)
+        elif len(self.stack1) > 0:
+            self.stack1.insert(0, x)
 
     def pop(self) -> int:
-        if self.head == None:
-            return None
-        val = self.head.val
-        self.head = self.head.next
-        return val
+        if len(self.stack1) == 1:
+            val = self.stack1[0]
+            self.stack1 = []
+            return val
+        if len(self.stack2) == 1:
+            val = self.stack2[0]
+            self.stack2 = []
+            return val
+        if len(self.stack2) > 0:
+            val = self.stack2[0]
+            self.stack2.pop(0)
+            return val
+        if len(self.stack1) > 0:
+            self.stack2 = []
+            for i in range(len(self.stack1)):
+                self.stack2.insert(0, self.stack1[i])
+            self.stack1 = []
+            val = self.stack2[0]
+            self.stack2.pop(0)
+            return val
 
     def peek(self) -> int:
-        if self.head == None:
-            return None
-        return self.head.val
+        if len(self.stack1) == 1:
+            val = self.stack1[0]
+            return val
+        if len(self.stack2) == 1:
+            val = self.stack2[0]
+            return val
+        if len(self.stack2) > 0:
+            val = self.stack2[0]
+            return val
+        if len(self.stack1) > 0:
+            self.stack2 = []
+            for i in range(len(self.stack1)):
+                self.stack2.insert(0, self.stack1[i])
+            self.stack1 = []
+            val = self.stack2[0]
+            return val
 
     def empty(self) -> bool:
-        if self.head == None:
+        if len(self.stack1) == 0 and len(self.stack2) == 0:
             return True
         return False
 
